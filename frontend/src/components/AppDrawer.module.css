@@ -1,0 +1,172 @@
+/* Modern App Drawer Styles for MOOS */
+
+.drawerOverlay {
+  position: fixed;
+  z-index: 1000;
+  inset: 0;
+  background: rgba(18, 20, 32, 0.74);
+  backdrop-filter: blur(8px) saturate(120%);
+  transition: opacity 0.22s;
+  animation: overlayFadeIn 0.33s cubic-bezier(.77,0,.18,1) both;
+}
+
+@keyframes overlayFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+
+.appDrawer {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1);
+  height: 90vh;
+  width: 96vw;
+  max-width: 700px;
+  background: rgba(28, 35, 54, 0.98);
+  box-shadow: 0 8px 48px 0 #4f8cff44;
+  border-radius: 32px;
+  z-index: 1101;
+  display: flex;
+  flex-direction: column;
+  padding: 2.5rem 1.7rem 1.2rem 1.7rem;
+  animation: drawerPopIn 0.38s cubic-bezier(.77,0,.18,1) both;
+  overflow: hidden;
+  border: 2.5px solid #b46fff44;
+}
+
+@keyframes drawerPopIn {
+  from { opacity: 0; transform: translate(-50%, -48%) scale(0.93); }
+  to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+}
+
+
+@keyframes fadeInDrawer {
+  from { opacity: 0; transform: translateX(100%) scale(0.98); }
+  to { opacity: 1; transform: translateX(0) scale(1); }
+}
+
+.drawerContent {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  padding-right: 0.5rem;
+  animation: fadeInDrawer 0.6s cubic-bezier(.77,0,.18,1) both;
+}
+
+/* Custom Scrollbar Styling */
+.drawerContent::-webkit-scrollbar {
+  width: 10px;
+}
+.drawerContent::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #4f8cff 20%, #b46fff 80%);
+  border-radius: 8px;
+  min-height: 40px;
+  box-shadow: 0 2px 8px #23252633;
+}
+.drawerContent::-webkit-scrollbar-track {
+  background: rgba(28,35,54,0.13);
+  border-radius: 8px;
+}
+
+/* Firefox */
+.drawerContent {
+  scrollbar-width: thin;
+  scrollbar-color: #4f8cff #232526;
+}
+
+
+@keyframes slideInDrawer {
+  from { transform: translateX(100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+.drawerHeader {
+  font-size: 2.1rem;
+  font-weight: 800;
+  color: #b46fff;
+  letter-spacing: 1.5px;
+  margin-bottom: 1.2rem;
+  text-shadow: 0 2px 12px #4f8cff33;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.drawerCloseBtn {
+  background: none;
+  border: none;
+  color: #ff5bcb;
+  font-size: 2.3rem;
+  cursor: pointer;
+  padding: 0 0.2rem;
+  transition: color 0.18s;
+}
+.drawerCloseBtn:hover {
+  color: #4f8cff;
+}
+
+.appSearch {
+  width: 100%;
+  padding: 0.7rem 1.2rem;
+  border-radius: 999px;
+  border: none;
+  background: rgba(60, 40, 100, 0.18);
+  color: #e1e6f9;
+  font-size: 1.05rem;
+  margin-bottom: 1.2rem;
+  outline: none;
+}
+
+.appCategory {
+  color: #4f8cff;
+  font-size: 1.13rem;
+  font-weight: 700;
+  margin: 1.4rem 0 0.55rem 0.2rem;
+  letter-spacing: 0.7px;
+  text-shadow: 0 1px 8px #b46fff22;
+}
+
+.appGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(94px, 1fr));
+  gap: 1.1rem 1.1rem;
+}
+
+.appTile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.7rem 0.2rem 0.8rem 0.2rem;
+  background: rgba(255,255,255,0.06);
+  border-radius: 16px;
+  cursor: pointer;
+  user-select: none;
+  box-shadow: 0 2px 10px 0 #4f8cff18;
+  transition: background 0.17s, box-shadow 0.17s, transform 0.13s;
+  border: 2px solid transparent;
+}
+.appTile:hover {
+  background: rgba(120,60,255,0.13);
+  box-shadow: 0 4px 24px 0 #b46fff44;
+  border: 2px solid #b46fff;
+  transform: scale(1.06);
+}
+.appIconImg {
+  width: 44px;
+  height: 44px;
+  object-fit: contain;
+  margin-bottom: 0.35rem;
+  border-radius: 8px;
+  background: #fff2;
+  box-shadow: 0 1px 8px 0 #4f8cff33;
+}
+.appTileLabel {
+  color: #e1e6f9;
+  font-size: 0.96rem;
+  font-weight: 700;
+  text-align: center;
+  letter-spacing: 0.3px;
+  margin-top: 0.1rem;
+}
