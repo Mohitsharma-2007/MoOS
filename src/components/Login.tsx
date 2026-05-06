@@ -1,13 +1,8 @@
 import React, { useState } from 'react';
-import styles from './Login.module.css';
-import MOOSLogo from './moos_logo.PNG';
-
-interface User {
-  username: string;
-  password: string;
-}
 
 const LOCAL_KEY = 'moos_users';
+
+interface User { username: string; password: string }
 
 function getUsers(): User[] {
   const data = localStorage.getItem(LOCAL_KEY);
@@ -18,7 +13,7 @@ function saveUsers(users: User[]) {
   localStorage.setItem(LOCAL_KEY, JSON.stringify(users));
 }
 
-const Login: React.FC<{ onLogin: (username: string) => void }> = ({ onLogin }) => {
+const Login = ({ onLogin }: { onLogin: (username: string) => void }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [isRegister, setIsRegister] = useState(false);
@@ -38,70 +33,53 @@ const Login: React.FC<{ onLogin: (username: string) => void }> = ({ onLogin }) =
       setIsRegister(false);
     } else {
       const user = users.find(u => u.username === username && u.password === password);
-      if (user) {
-        onLogin(username);
-      } else {
-        setError('Invalid credentials');
-      }
+      if (user) onLogin(username);
+      else setError('Invalid credentials');
     }
   };
 
   return (
-    <div className={styles.loginContainer + ' ' + styles.fullPage}>
-      {/* Bubbles background */}
-      <div style={{position:'absolute',top:'-8rem',left:'-8rem',width:'18rem',height:'18rem',borderRadius:'100%',background:'linear-gradient(135deg,#7a174a,#c31432)',opacity:0.7,filter:'blur(32px)',boxShadow:'0 0 40px #c31432aa',zIndex:0}}/>
-      <div style={{position:'absolute',left:'2.5rem',top:'33%',width:'9rem',height:'9rem',borderRadius:'100%',background:'linear-gradient(135deg,#3b0a3d,#c31432)',opacity:0.7,filter:'blur(20px)',zIndex:0}}/>
-      <div style={{position:'absolute',bottom:0,left:0,width:'13rem',height:'13rem',borderRadius:'100%',background:'linear-gradient(135deg,#c31432,#7a174a)',opacity:0.8,filter:'blur(32px)',zIndex:0}}/>
-      <div style={{position:'absolute',bottom:'-6rem',right:0,width:'20rem',height:'20rem',borderRadius:'100%',background:'linear-gradient(135deg,#c31432,#3b0a3d)',opacity:0.8,filter:'blur(32px)',zIndex:0}}/>
-      <div style={{position:'absolute',right:'8rem',top:'2.5rem',width:'6rem',height:'6rem',borderRadius:'100%',background:'linear-gradient(135deg,#c31432,#7a174a)',opacity:0.7,filter:'blur(16px)',zIndex:0}}/>
-      <div style={{position:'absolute',right:'6rem',bottom:'25%',width:'5rem',height:'5rem',borderRadius:'100%',background:'linear-gradient(135deg,#7a174a,#c31432)',opacity:0.6,filter:'blur(12px)',zIndex:0}}/>
-      {/* Glassy Card */}
-       <div className={styles.glassCard}>
-        <div className={styles.logoCircle}>
-          <img src={MOOSLogo} alt="MOOS Logo" className={styles.logoImg} />
-        </div>
-        <h2 className={styles.loginTitle}>{isRegister ? 'Register New User' : 'Welcome to MOOS'}</h2>
-        <div className={styles.underline} />
-        <form onSubmit={handleSubmit} className={styles.loginForm}>
-          <label htmlFor="username" className={styles.inputLabel}>User ID</label>
-          <div className={styles.inputGroup}>
-            <svg className={styles.inputIcon} fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-8 0v2"/><circle cx="12" cy="7" r="4"/></svg>
-            <input
-              id="username"
-              type="text"
-              placeholder="Enter user ID"
-              value={username}
-              onChange={e => setUsername(e.target.value)}
-              className={styles.inputField}
-              autoComplete="username"
-              required
-            />
-          </div>
-          <label htmlFor="password" className={styles.inputLabel}>Password</label>
-          <div className={styles.inputGroup}>
-            <svg className={styles.inputIcon} fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-            <input
-              id="password"
-              type="password"
-              placeholder="Enter password"
-              value={password}
-              onChange={e => setPassword(e.target.value)}
-              className={styles.inputField}
-              autoComplete={isRegister ? "new-password" : "current-password"}
-              required
-            />
-          </div>
-          {error && <div className={styles.loginError}>{error}</div>}
-          {isRegister ? (
-            <button type="submit" className={styles.loginBtn}>REGISTER</button>
-          ) : (
-            <button type="submit" className={styles.loginBtn}>LOG IN</button>
-          )}
-          <button type="button" className={styles.toggleBtn} onClick={() => { setError(''); setIsRegister(r => !r); }}>
-            {isRegister ? 'Already have an account? Log in' : "Don't have an account? Register"}
+    <div className="Login_loginContainer__I_mvg Login_fullPage__eHK5t">
+      {/* Subtle bubbles */}
+      <div style={{position:'absolute',top:'-8rem',left:'-8rem',width:'18rem',height:'18rem',borderRadius:'100%',background:'#1a1a1a',opacity:0.5,filter:'blur(32px)',zIndex:0}}/>
+      <div style={{position:'absolute',left:'2.5rem',top:'33%',width:'9rem',height:'9rem',borderRadius:'100%',background:'#2a2a2a',opacity:0.5,filter:'blur(20px)',zIndex:0}}/>
+      <div style={{position:'absolute',bottom:0,left:0,width:'13rem',height:'13rem',borderRadius:'100%',background:'#1a1a1a',opacity:0.6,filter:'blur(32px)',zIndex:0}}/>
+      <div style={{position:'absolute',bottom:'-6rem',right:0,width:'20rem',height:'20rem',borderRadius:'100%',background:'#2a2a2a',opacity:0.6,filter:'blur(32px)',zIndex:0}}/>
+      
+      <div className="loginBox">
+        <h1 className="loginTitle">MOOS</h1>
+        <p className="loginSubtitle">Modern Operating System</p>
+        
+        <form onSubmit={handleSubmit}>
+          <input
+            type="text"
+            placeholder="Username"
+            className="loginInput"
+            value={username}
+            onChange={e => setUsername(e.target.value)}
+          />
+          <input
+            type="password"
+            placeholder="Password"
+            className="loginInput"
+            value={password}
+            onChange={e => setPassword(e.target.value)}
+          />
+          {error && <p style={{color: '#666', fontSize: 13, marginBottom: 16}}>{error}</p>}
+          <button type="submit" className="loginButton">
+            {isRegister ? 'Create Account' : 'Sign In'}
           </button>
-          <div className={styles.infoNote}>Credentials are saved locally in your browser.</div>
         </form>
+        
+        <p style={{marginTop: 24, fontSize: 13, color: '#666'}}>
+          {isRegister ? 'Already have an account?' : "Don't have an account?"}{' '}
+          <button 
+            onClick={() => { setIsRegister(!isRegister); setError(''); }}
+            style={{background: 'none', border: 'none', color: '#fff', cursor: 'pointer', fontSize: 13}}
+          >
+            {isRegister ? 'Sign In' : 'Register'}
+          </button>
+        </p>
       </div>
     </div>
   );

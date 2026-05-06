@@ -1,82 +1,60 @@
 import React, { useState } from 'react';
-import styles from './AppDrawer.module.css';
 import { appList, AppMeta } from './appList';
 
-const fallbackIcon = 'https://img.icons8.com/color/96/000000/app-store.png';
-
-
-export interface AppDrawerProps {
+interface AppDrawerProps {
   open: boolean;
   onClose: () => void;
   onAppLaunch: (app: AppMeta) => void;
 }
 
-const AppDrawer: React.FC<AppDrawerProps> = ({ open, onClose, onAppLaunch }) => {
+const AppDrawer = ({ open, onClose, onAppLaunch }: AppDrawerProps) => {
   const [search, setSearch] = useState('');
-
+  
   if (!open) return null;
+  
+  const filteredApps = appList.filter(app => 
+    app.name.toLowerCase().includes(search.toLowerCase())
+  );
 
   return (
     <>
-      <div className={styles.drawerOverlay} onClick={onClose} />
-      <aside className={styles.appDrawer}>
-        <div className={styles.drawerHeader}>
-          App Drawer
-          <button className={styles.drawerCloseBtn} onClick={onClose} title="Close">×</button>
+      <div onClick={onClose} style={{position:'fixed',inset:0,zIndex:998}} />
+      <div className="appDrawerContainer" style={{left: '50%', transform: 'translateX(-50%)'}}>
+        <div style={{display:'flex',alignItems:'center',justifyContent:'space-between',marginBottom: 12}}>
+          <span style={{fontSize: 14, fontWeight: 500}}>App Drawer</span>
+          <button onClick={onClose} style={{background:'none',border:'none',color:'#666',fontSize:20,cursor:'pointer'}}>×</button>
         </div>
+        
         <input
-          className={styles.appSearch}
           type="text"
           placeholder="Search apps..."
           value={search}
           onChange={e => setSearch(e.target.value)}
+          style={{
+            width: '100%',
+            padding: '10px 14px',
+            background: '#1a1a1a',
+            border: '1px solid #333',
+            borderRadius: 8,
+            color: '#fff',
+            fontSize: 13,
+            marginBottom: 12
+          }}
         />
-        <div className={styles.drawerContent}>
-          {/* Group apps by category */}
-          {Array.from(new Set(appList.map(a => a.category))).map(category => {
-            const filteredApps = appList.filter(app =>
-              app.category === category &&
-              app.name.toLowerCase().includes(search.toLowerCase())
-            );
-            if (filteredApps.length === 0) return null;
-            return (
-              <div key={category}>
-                <div className={styles.appCategory}>{category}</div>
-                <div className={styles.appGrid}>
-                  {filteredApps.map(app => (
-                    <div
-                      key={app.name}
-                      className={styles.appTile}
-                      onClick={() => onAppLaunch(app) }
-                      title={app.description || app.name}
-                    >
-                      {app.icon ? (
-                        <img className={styles.appIconImg} src={app.icon} alt={app.name} onError={e => (e.currentTarget.src = fallbackIcon)} />
-                      ) : (
-                        <svg
-                          className={styles.appIconImg}
-                          width="38"
-                          height="38"
-                          viewBox="0 0 24 24"
-                          fill="currentColor"
-                          xmlns="http://www.w3.org/2000/svg"
-                          aria-hidden="true"
-                        >
-                          <rect x="3" y="3" width="7" height="7" rx="2"/>
-                          <rect x="14" y="3" width="7" height="7" rx="2"/>
-                          <rect x="14" y="14" width="7" height="7" rx="2"/>
-                          <rect x="3" y="14" width="7" height="7" rx="2"/>
-                        </svg>
-                      )}
-                      <div className={styles.appTileLabel}>{app.name}</div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            );
-          })}
+        
+        <div className="appDrawerGrid" style={{maxHeight: 200, overflowY: 'auto'}}>
+          {filteredApps.map(app => (
+            <div
+              key={app.name}
+              className="appDrawerItem"
+              onClick={() => onAppLaunch(app)}
+            >
+              <img className="appDrawerIcon" src={app.icon || 'https://img.icons8.com/color/96/000000/app-store.png'} alt={app.name} />
+              <span className="appDrawerLabel">{app.name}</span>
+            </div>
+          ))}
         </div>
-      </aside>
+      </div>
     </>
   );
 };

@@ -1,45 +1,41 @@
-import React from 'react';
-import styles from './WidgetPanel.module.css';
-
 interface WidgetPanelProps {
   open: boolean;
   onClose: () => void;
-  onWallpaperClick?: () => void;
 }
 
-const WidgetPanel: React.FC<WidgetPanelProps> = ({ open, onClose, onWallpaperClick }) => {
+const WidgetPanel = ({ open, onClose }: WidgetPanelProps) => {
   if (!open) return null;
+  
   return (
-    <div className={styles.overlay}>
-      <div className={styles.panel}>
-        <button className={styles.closeBtn} onClick={onClose} title="Close">×</button>
-        <h2 className={styles.title}>Widgets</h2>
-        <div className={styles.widgetsGrid}>
-          {/* Weather Widget */}
-          <div className={styles.widget}>
-            <img src="https://img.icons8.com/color/96/000000/partly-cloudy-day--v2.png" alt="Weather" className={styles.widgetImg} />
-            <div className={styles.widgetLabel}>Weather<br/><span className={styles.widgetSub}>22°C, Partly Cloudy</span></div>
+    <>
+      <div onClick={onClose} style={{position:'fixed',inset:0,zIndex:998}} />
+      <div className="widgetPanel">
+        <button onClick={onClose} style={{position:'absolute',top:12,right:12,background:'none',border:'none',color:'#666',fontSize:20,cursor:'pointer'}}>×</button>
+        <h2 className="widgetTitle">Widgets</h2>
+        <div style={{display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 8}}>
+          <div style={{padding: 12, background: '#1a1a1a', borderRadius: 10}}>
+            <div style={{fontSize: 11, color: '#666'}}>Weather</div>
+            <div style={{fontSize: 20, fontWeight: 300}}>22°C</div>
+            <div style={{fontSize: 11, color: '#666'}}>Clear</div>
           </div>
-          {/* Calendar Widget */}
-          <div className={styles.widget}>
-            <img src="https://img.icons8.com/color/96/000000/calendar--v2.png" alt="Calendar" className={styles.widgetImg} />
-            <div className={styles.widgetLabel}>Calendar<br/><span className={styles.widgetSub}>Apr 27, 2025</span></div>
+          <div style={{padding: 12, background: '#1a1a1a', borderRadius: 10}}>
+            <div style={{fontSize: 11, color: '#666'}}>Calendar</div>
+            <div style={{fontSize: 20, fontWeight: 300}}>May 6</div>
+            <div style={{fontSize: 11, color: '#666'}}>2026</div>
           </div>
-          {/* Notes Widget */}
-          <div className={styles.widget}>
-            <img src="https://img.icons8.com/color/96/000000/note--v2.png" alt="Notes" className={styles.widgetImg} />
-            <div className={styles.widgetLabel}>Notes<br/><span className={styles.widgetSub}>No notes yet</span></div>
+          <div style={{padding: 12, background: '#1a1a1a', borderRadius: 10}}>
+            <div style={{fontSize: 11, color: '#666'}}>Battery</div>
+            <div style={{fontSize: 20, fontWeight: 300}}>87%</div>
+            <div style={{fontSize: 11, color: '#666'}}>Charging</div>
           </div>
-          {/* Wallpaper Widget */}
-          {onWallpaperClick && (
-            <div className={styles.widget} onClick={onWallpaperClick} style={{cursor: 'pointer'}}>
-              <img src="https://img.icons8.com/color/96/000000/picture.png" alt="Wallpaper" className={styles.widgetImg} />
-              <div className={styles.widgetLabel}>Wallpaper<br/><span className={styles.widgetSub}>Change</span></div>
-            </div>
-          )}
+          <div style={{padding: 12, background: '#1a1a1a', borderRadius: 10}}>
+            <div style={{fontSize: 11, color: '#666'}}>Wi-Fi</div>
+            <div style={{fontSize: 20, fontWeight: 300}}>Connected</div>
+            <div style={{fontSize: 11, color: '#666'}}>5G</div>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
