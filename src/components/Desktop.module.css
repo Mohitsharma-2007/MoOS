@@ -1,0 +1,156 @@
+/* Unique, modern desktop styles for MOOS */
+
+.desktopRoot {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: none !important;
+  animation: none;
+  display: flex;
+  flex-direction: column;
+  z-index: 1;
+}
+
+.wallpaperBg {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  pointer-events: none;
+}
+
+
+@keyframes desktopBgMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
+
+.desktopBubbles {
+  position: absolute;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.desktopBubbles .bubble {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.5;
+  filter: blur(24px);
+  animation: floatBubble 16s ease-in-out infinite alternate;
+}
+
+@keyframes floatBubble {
+  0% { transform: translateY(0) scale(1); }
+  100% { transform: translateY(-30px) scale(1.08); }
+}
+
+.desktopIcons {
+  position: absolute;
+  top: 2.5rem;
+  left: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.8rem;
+  z-index: 2;
+}
+
+.desktopIcon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+  padding: 0.5rem 0.3rem;
+  border-radius: 12px;
+  transition: background 0.18s;
+}
+.desktopIcon:hover {
+  background: rgba(255,255,255,0.08);
+  box-shadow: 0 2px 16px 0 #b46fff33;
+}
+.desktopIconImg {
+  width: 54px;
+  height: 54px;
+  object-fit: contain;
+  margin-bottom: 0.3rem;
+  border-radius: 11px;
+  background: #fff2;
+  box-shadow: 0 1px 8px 0 #4f8cff33;
+}
+.desktopIconLabel {
+  color: #e1e6f9;
+  font-size: 1.01rem;
+  font-weight: 600;
+  text-shadow: 0 1px 8px #23252699;
+  letter-spacing: 0.5px;
+}
+
+.desktopFooter {
+  position: absolute;
+  bottom: 0.7rem;
+  right: 1.5rem;
+  color: #b46fff;
+  font-size: 1.08rem;
+  font-weight: 500;
+  opacity: 0.7;
+  z-index: 2;
+  text-shadow: 0 1px 8px #4f8cff33;
+  pointer-events: none;
+}
+
+
+.appDrawerButton {
+  position: fixed;
+  left: 32px;
+  bottom: 36px;
+  z-index: 3000;
+  width: 68px;
+  height: 68px;
+  background: linear-gradient(135deg, #4f8cff 60%, #b46fff 100%);
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 24px #4f8cff44;
+  cursor: pointer;
+  transition: background 0.14s, box-shadow 0.18s, transform 0.13s;
+  outline: none;
+  border: none;
+  padding: 0;
+  user-select: none;
+}
+.appDrawerButton:hover {
+  background: linear-gradient(135deg, #b46fff 70%, #4f8cff 100%);
+  box-shadow: 0 6px 32px #b46fff55;
+  transform: scale(1.06);
+}
+.appDrawerIcon {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  margin-bottom: 0.2rem;
+  border-radius: 10px;
+  background: #fff2;
+  box-shadow: 0 1px 8px 0 #4f8cff33;
+}
+.appDrawerLabel {
+  color: #fff;
+  font-size: 1.02rem;
+  font-weight: 600;
+  text-shadow: 0 1px 8px #23252699;
+  letter-spacing: 0.5px;
+  margin-top: -2px;
+}
+
+/* Add more styles for windows, widgets, etc. as needed */

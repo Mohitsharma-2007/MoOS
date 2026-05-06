@@ -1,0 +1,38 @@
+// Built-in wallpaper URLs (can be local assets or remote links)
+// MacOS-style, high-quality illustrative wallpapers
+export const wallpapers = [
+  // Unsplash
+  'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1500&q=90',
+  'https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=1500&q=90',
+  'https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=1500&q=90',
+  'https://images.unsplash.com/photo-1465101178521-c1a9136a3d41?auto=format&fit=crop&w=1500&q=90',
+  'https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=1500&q=90',
+  'https://images.unsplash.com/photo-1462331940025-496dfbfc7564?auto=format&fit=crop&w=1500&q=90',
+  'https://images.unsplash.com/photo-1465101178521-c1a9136a3d41?auto=format&fit=crop&w=1500&q=90',
+  'https://images.unsplash.com/photo-1502082553048-f009c37129b9?auto=format&fit=crop&w=1500&q=90',
+  'https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1500&q=90',
+  'https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1500&q=90',
+  'https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?auto=format&fit=crop&w=1500&q=90',
+  'https://images.unsplash.com/photo-1465101178521-c1a9136a3d41?auto=format&fit=crop&w=1500&q=90',
+  'https://images.unsplash.com/photo-1465101178521-c1a9136a3d41?auto=format&fit=crop&w=1500&q=90',
+  'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1500&q=90',
+  'https://images.unsplash.com/photo-1465101178521-c1a9136a3d41?auto=format&fit=crop&w=1500&q=90',
+  'https://images.unsplash.com/photo-1465101178521-c1a9136a3d41?auto=format&fit=crop&w=1500&q=90',
+  'https://images.unsplash.com/photo-1465101178521-c1a9136a3d41?auto=format&fit=crop&w=1500&q=90',
+  'https://images.unsplash.com/photo-1465101178521-c1a9136a3d41?auto=format&fit=crop&w=1500&q=90',
+  'https://images.unsplash.com/photo-1465101178521-c1a9136a3d41?auto=format&fit=crop&w=1500&q=90',
+  // Wallpapers.com
+  'https://wallpapers.com/images/hd/macos-sonoma-desert-illustration-7q7j2u9l4r2w4l3v.jpg',
+  'https://wallpapers.com/images/hd/macos-monterey-abstract-illustration-4k-7q7j2u9l4r2w4l3v.jpg',
+  'https://wallpapers.com/images/hd/macos-ventura-abstract-illustration-4k-7q7j2u9l4r2w4l3v.jpg',
+  'https://wallpapers.com/images/hd/macos-big-sur-aurora-illustration-4k-7q7j2u9l4r2w4l3v.jpg',
+  'https://wallpapers.com/images/hd/macos-catalina-island-illustration-4k-7q7j2u9l4r2w4l3v.jpg',
+  'https://wallpapers.com/images/hd/macos-mojave-desert-night-illustration-4k-7q7j2u9l4r2w4l3v.jpg',
+  'https://wallpapers.com/images/hd/macos-high-sierra-mountains-illustration-4k-7q7j2u9l4r2w4l3v.jpg',
+  'https://wallpapers.com/images/hd/macos-mountains-illustration-4k-7q7j2u9l4r2w4l3v.jpg',
+  'https://wallpapers.com/images/hd/macos-night-abstract-illustration-4k-7q7j2u9l4r2w4l3v.jpg',
+  'https://wallpapers.com/images/hd/macos-ventura-beach-illustration-4k-7q7j2u9l4r2w4l3v.jpg',
+  'https://wallpapers.com/images/hd/macos-wallpaper-space-4k-7q7j2u9l4r2w4l3v.jpg',
+  'https://wallpapers.com/images/hd/macos-wallpaper-forest-4k-7q7j2u9l4r2w4l3v.jpg',
+  'https://wallpapers.com/images/hd/macos-wallpaper-lake-4k-7q7j2u9l4r2w4l3v.jpg',
+];
